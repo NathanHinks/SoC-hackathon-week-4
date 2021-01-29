@@ -17,12 +17,14 @@ function renderToDo(toDoItem) {
 
 	const li = document.createElement('li');
 	li.id = `to-do-item-${id}`;
-	li.appendChild(createCheckbox(toDoItem));
-	li.appendChild(span);
-	li.appendChild(createDeleteButton(toDoItem));
+	const checkBox = (createCheckbox(toDoItem));
 	if (isComplete) {
 		li.classList.add('completed');
+		checkBox.checked = true;
 	}
+	li.appendChild(checkBox);
+	li.appendChild(span);
+	li.appendChild(createDeleteButton(toDoItem));
 	mainList.appendChild(li);
 }
 
@@ -93,7 +95,7 @@ inputForm.addEventListener('submit', handleAddToDo);
 
 loadInitialToDos();
 
-//delete all
+//delete all button
 const deleteCompletedBtn = document.querySelector('.delete-completed');
 
 async function deleteAllToDo() {
@@ -107,12 +109,9 @@ async function deleteAllToDo() {
 
 deleteCompletedBtn.addEventListener('click', deleteAllToDo);
 
-//filter by priority
+
+//filter by priority button
 const priorityBtn = document.querySelector('.filter-priority');
 
-async function filterPriority() {
   //orders on load anyway
-  location.reload();
-}
-
-priorityBtn.addEventListener('click', filterPriority);
+priorityBtn.addEventListener('click', () => location.reload());
