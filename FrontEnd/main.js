@@ -1,5 +1,6 @@
 const mainList = document.querySelector("#main-list");
 const inputForm = document.querySelector("#input-form");
+const itemsArray = []
 
 const BACKEND_URL = "http://localhost:5000";
 
@@ -24,6 +25,8 @@ function renderToDo(toDoItem) {
     li.classList.add("completed");
   }
   mainList.appendChild(li);
+  itemsArray.push(toDoItem)
+
 }
 
 function createCheckbox(toDoItem) {
@@ -96,16 +99,21 @@ loadInitialToDos();
 const deleteCompletedBtn = document.querySelector(".delete-completed");
 //delete all 
 function deleteAllCompleted() {
+
+  console.log(itemsArray)
+  
   //loop over all children of main list
-  for (i = 0; i < mainList.length; i++){
-    console.log(`main list: ${mainList}`)
-      console.log(mainList[i])
+  for (i = 0; i < itemsArray.length; i++){
+    
       //check if completed = true
-      if (mainList[i].classList.contains("completed")) {
+     // if (itemsArray[i].isComplete === true) {
         //if it is delete it
-        console.log(mainList[i].classList);
-        }
+        deleteToDo(itemsArray[i])
+        itemsArray[i]
+        //remove from array
+       // }
   }
+  console.log(itemsArray)
 }
 console.log("something")
 
