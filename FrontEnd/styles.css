@@ -5,13 +5,13 @@
 
 body {
   background-color: rgb(219, 216, 210);
+  font-family: "Roboto Mono", monospace;
 }
 
 .container {
   box-shadow: rgb(148, 204, 148) 5px 5px, rgb(123, 170, 123) 10px 10px,
     rgb(97, 134, 97) 15px 15px;
 
-  font-family: "Times New Roman", Times, serif;
   font-size: 14px;
   margin: 100px auto;
   max-width: 500px;
@@ -28,10 +28,10 @@ h1 {
   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
   padding: 5px 0;
 }
-.text-input:focus{
+.text-input:focus {
   box-shadow: none;
   outline: none;
-  border-bottom: 1px solid  rgb(148, 204, 148);
+  border-bottom: 1px solid rgb(148, 204, 148);
 }
 select:focus {
   outline: 1px solid rgb(148, 204, 148);
@@ -60,8 +60,8 @@ button {
   border-radius: 0.12em;
   box-sizing: border-box;
   text-decoration: none;
-  font-family: "Roboto", sans-serif;
-  font-weight: 300;
+  font-family: inherit;
+  font-weight: 600;
   color: rgb(148, 204, 148);
   text-align: center;
   transition: all 0.2s;
@@ -75,10 +75,36 @@ button:hover {
 
 li {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   width: 100%;
+  align-items: center;
+  margin-top: 5px;
+}
+
+li input {
+  margin-right: 10px;
+  background-color: rgb(123, 170, 123);
+}
+
+li input:checked {
+  background-color: rgb(123, 170, 123);
 }
 
 li button {
-  justify-self: end;
+  display: inline-block;
+  justify-self: flex-end;
+}
+
+li span {
+  display: block;
+  flex-grow: 5;
+  font-weight: 400;
+}
+
+select {
+  border: none;
+  color: rgb(148, 204, 148);
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 600;
 }
