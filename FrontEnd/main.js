@@ -91,3 +91,22 @@ async function deleteToDo(toDoItem) {
 inputForm.addEventListener("submit", handleAddToDo);
 
 loadInitialToDos();
+
+
+const deleteCompletedBtn = document.querySelector(".delete-completed");
+//delete all 
+function deleteAllCompleted() {
+  //loop over all children of main list
+  for (i = 0; i < mainList.length; i++){
+    console.log(`main list: ${mainList}`)
+      console.log(mainList[i])
+      //check if completed = true
+      if (mainList[i].classList.contains("completed")) {
+        //if it is delete it
+        console.log(mainList[i].classList);
+        }
+  }
+}
+console.log("something")
+
+deleteCompletedBtn.addEventListener("click", deleteAllCompleted);
