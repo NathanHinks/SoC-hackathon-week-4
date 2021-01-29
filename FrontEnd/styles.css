@@ -46,6 +46,7 @@ form {
 }
 
 .delete-completed {
+  text-transform: uppercase;
   display: block;
   margin: auto;
   margin-bottom: 20px;
@@ -83,12 +84,8 @@ li {
 
 li input {
   margin-right: 10px;
-  background-color: rgb(123, 170, 123);
 }
 
-li input:checked {
-  background-color: rgb(123, 170, 123);
-}
 
 li button {
   display: inline-block;
