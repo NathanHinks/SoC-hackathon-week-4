@@ -6,7 +6,7 @@ public class ToDoItemRepository : BaseRepository
     public IEnumerable<ToDoItem> GetAll()
     {
         using var connection = CreateConnection();
-        return connection.Query<ToDoItem>("SELECT * FROM ToDoItems ORDER BY Id;");
+        return connection.Query<ToDoItem>("SELECT * FROM ToDoItems ORDER BY CASE WHEN priority = 'high' THEN 1 WHEN priority = 'medium' THEN 2 WHEN priority = 'low' THEN 3 END;");
     }
 
     public void Delete(long id)

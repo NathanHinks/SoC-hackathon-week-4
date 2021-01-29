@@ -14,7 +14,7 @@ public class ToDoItemController : ControllerBase
     }
 
     [HttpGet]
-    public IEnumerable<ToDoItem> GetAllToDoItems(int id)
+    public IEnumerable<ToDoItem> GetAllToDoItems()
     {
         return _ToDoItemRepository.GetAll();
     }
