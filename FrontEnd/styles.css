@@ -1,18 +1,61 @@
-
 .completed {
   color: rgb(148, 204, 148);
   opacity: 0.6;
 }
 
+body {
+  background-color: rgb(219, 216, 210);
+}
+
 .container {
-  border: 1px solid black;
-  font-family: 'Times New Roman', Times, serif;
+  box-shadow: rgb(148, 204, 148) 5px 5px, rgb(123, 170, 123) 10px 10px,
+    rgb(97, 134, 97) 15px 15px;
+
+  font-family: "Times New Roman", Times, serif;
   font-size: 14px;
   margin: 100px auto;
   max-width: 500px;
   padding: 10px;
+  background-color: #fff;
 }
 
 h1 {
   text-align: center;
+}
+
+label {
+  display: block;
+  margin-bottom: 20px;
+}
+
+form {
+  text-align: center;
+}
+
+.delete-completed {
+  display: block;
+  margin: auto;
+  margin-bottom: 20px;
+  margin-top: 10px;
+}
+
+button {
+  display: inline-block;
+  padding: 0.35em 1.2em;
+  border: 0.1em solid rgb(148, 204, 148);
+  margin: 0 0.3em 0.3em 0;
+  border-radius: 0.12em;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  color: rgb(148, 204, 148);
+  text-align: center;
+  transition: all 0.2s;
+  background-color: #fff;
+}
+
+button:hover {
+  background-color: rgb(148, 204, 148);
+  color: #ffffff;
 }
