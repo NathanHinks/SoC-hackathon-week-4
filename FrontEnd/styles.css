@@ -2,8 +2,8 @@
 :root {
   --body-bg: #d8d7cb;
   --main-color: #62929E;
-  --red: rgb(141, 68, 68);
   --neutral: #393D3F;
+  --red: rgb(141, 68, 68);
 }
 * {
   box-sizing: border-box;
@@ -78,7 +78,6 @@ button {
   background-color: #fff;
   border-radius: 0.12em;
   border: 0.1em solid var(--main-color);
-  box-sizing: border-box;
   color: var(--main-color);
   display: block;
   font-weight: 600;
@@ -86,7 +85,6 @@ button {
   text-align: center;
   transition: all 0.2s;
 }
-
 button:hover {
   background-color: var(--main-color);
   color: #ffffff;
@@ -96,6 +94,7 @@ button:hover {
   display: inline;
   font-size: 11px;
 }
+
 form button {
   border: 1px solid var(--neutral);
   border-radius: 5px;
@@ -130,7 +129,6 @@ li {
 li input {
   margin-right: 10px;
 }
-
 
 li button {
   font-size: 12px;
