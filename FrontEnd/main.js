@@ -25,8 +25,7 @@ function renderToDo(toDoItem) {
     li.classList.add("completed");
   }
   mainList.appendChild(li);
-  itemsArray.push(toDoItem)
-
+  itemsArray.push(li)
 }
 
 function createCheckbox(toDoItem) {
@@ -74,6 +73,7 @@ async function sendToDo(path, method, body = "") {
 }
 
 async function toggleToDoComplete(toDoItem) {
+  console.log(toDoItem)
   const li = document.querySelector(`#to-do-item-${toDoItem.id}`);
   await sendToDo(`/todoitems/${toDoItem.id}`, "PUT", {
     ...toDoItem,
@@ -98,23 +98,27 @@ loadInitialToDos();
 
 const deleteCompletedBtn = document.querySelector(".delete-completed");
 //delete all 
-function deleteAllCompleted() {
-
-  console.log(itemsArray)
+async function deleteAllCompleted() {
+  console.log(itemsArray[0]);
+  
   
   //loop over all children of main list
-  for (i = 0; i < itemsArray.length; i++){
-    
-      //check if completed = true
-     // if (itemsArray[i].isComplete === true) {
-        //if it is delete it
-        deleteToDo(itemsArray[i])
-        itemsArray[i]
-        //remove from array
-       // }
+  for (i = 0; i < itemsArray.length; i++) {
+    if (itemsArray[i].classList.contains("completed")) {
+      deleteToDo(itemsArray[i]);
+    }
+    //check if completed = true
+    // if (itemsArray[i].isComplete === true) {
+    //if it is delete it
+    //deleteToDo(itemsArray[i])
+    //itemsArray[i]
+    //remove from array
+    // }
   }
-  console.log(itemsArray)
 }
-console.log("something")
+  //itemsArray.length = 0;
+  //console.log(itemsArray)
+
+
 
 deleteCompletedBtn.addEventListener("click", deleteAllCompleted);
