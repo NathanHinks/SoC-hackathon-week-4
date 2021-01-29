@@ -1,6 +1,5 @@
 const mainList = document.querySelector("#main-list");
 const inputForm = document.querySelector("#input-form");
-const itemsArray = []
 
 const BACKEND_URL = "http://localhost:5000";
 
@@ -25,7 +24,7 @@ function renderToDo(toDoItem) {
     li.classList.add("completed");
   }
   mainList.appendChild(li);
-  itemsArray.push(li)
+  
 }
 
 function createCheckbox(toDoItem) {
@@ -98,27 +97,19 @@ loadInitialToDos();
 
 const deleteCompletedBtn = document.querySelector(".delete-completed");
 //delete all 
-async function deleteAllCompleted() {
-  console.log(itemsArray[0]);
-  
-  
-  //loop over all children of main list
-  for (i = 0; i < itemsArray.length; i++) {
-    if (itemsArray[i].classList.contains("completed")) {
-      deleteToDo(itemsArray[i]);
-    }
-    //check if completed = true
-    // if (itemsArray[i].isComplete === true) {
-    //if it is delete it
-    //deleteToDo(itemsArray[i])
-    //itemsArray[i]
-    //remove from array
-    // }
+
+async function deleteAllToDo() {
+  const res = await fetch(`${BACKEND_URL}/todoitems/`, {
+    method: "DELETE",
+  });
+  if (res.ok) {
+    location.reload();
+    //await loadInitialToDos();
+    
   }
 }
-  //itemsArray.length = 0;
-  //console.log(itemsArray)
+ 
 
 
 
-deleteCompletedBtn.addEventListener("click", deleteAllCompleted);
+deleteCompletedBtn.addEventListener("click", deleteAllToDo);

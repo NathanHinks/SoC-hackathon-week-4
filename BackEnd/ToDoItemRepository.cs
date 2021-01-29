@@ -15,6 +15,12 @@ public class ToDoItemRepository : BaseRepository
         connection.Execute("DELETE FROM ToDoItems WHERE Id = @Id", new { Id = id });
     }
 
+    public void DeleteAll()
+    {
+        using var connection = CreateConnection();
+        connection.Execute("DELETE FROM ToDoItems WHERE isComplete=true");
+    }
+
     public ToDoItem GetOne(long id)
     {
         using var connection = CreateConnection();
