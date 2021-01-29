@@ -23,6 +23,19 @@ h1 {
   text-align: center;
 }
 
+.text-input {
+  border: none;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  padding: 5px 0;
+}
+.text-input:focus{
+  box-shadow: none;
+  outline: none;
+  border-bottom: 1px solid  rgb(148, 204, 148);
+}
+select:focus {
+  outline: 1px solid rgb(148, 204, 148);
+}
 label {
   display: block;
   margin-bottom: 20px;
@@ -58,4 +71,14 @@ button {
 button:hover {
   background-color: rgb(148, 204, 148);
   color: #ffffff;
+}
+
+li {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+li button {
+  justify-self: end;
 }
