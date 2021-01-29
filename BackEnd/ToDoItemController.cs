@@ -26,16 +26,16 @@ public class ToDoItemController : ControllerBase
     }
 
     [HttpPut("{id}")]
-    public ToDoItem UpdateToDoItem(int id, [FromBody] ToDoItem ToDoItem)
+    public ToDoItem UpdateToDoItem(int id, [FromBody] ToDoItem toDoItem)
     {
-        ToDoItem.Id = id;
-        return _ToDoItemRepository.Update(ToDoItem);
+        toDoItem.Id = id;
+        return _ToDoItemRepository.Update(toDoItem);
     }
 
     [HttpPost]
-    public ToDoItem CreateToDoItem([FromBody] ToDoItem ToDoItem)
+    public ToDoItem CreateToDoItem([FromBody] ToDoItem toDoItem)
     {
-        return _ToDoItemRepository.Insert(ToDoItem);
+        return _ToDoItemRepository.Insert(toDoItem);
     }
 
     [HttpDelete("{id}")]
