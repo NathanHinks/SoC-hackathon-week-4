@@ -1,42 +1,44 @@
 using System.Collections.Generic;
+using Microsoft.Extensions.Configuration;
 using Dapper;
-using System;
-public class ToDoItemRepository : BaseRepository
+using System.Threading.Tasks;
+public class ToDoItemRepository : BaseRepository, IRepository<ToDoItem>
 {
-    public IEnumerable<ToDoItem> GetAll()
+    public ToDoItemRepository(IConfiguration configuration) : base(configuration) { }
+    public async Task<IEnumerable<ToDoItem>> GetAll()
     {
         using var connection = CreateConnection();
-        return connection.Query<ToDoItem>("SELECT * FROM ToDoItems ORDER BY CASE WHEN priority = 'high' THEN 1 WHEN priority = 'medium' THEN 2 WHEN priority = 'low' THEN 3 END;");
+        return await connection.QueryAsync<ToDoItem>("SELECT * FROM ToDoItems ORDER BY CASE WHEN priority = 'high' THEN 1 WHEN priority = 'medium' THEN 2 WHEN priority = 'low' THEN 3 END;");
     }
 
-    public void Delete(long id)
+    public async Task Delete(long id)
     {
         using var connection = CreateConnection();
-        connection.Execute("DELETE FROM ToDoItems WHERE Id = @Id", new { Id = id });
+        await connection.ExecuteAsync("DELETE FROM ToDoItems WHERE Id = @Id", new { Id = id });
     }
 
-    public void DeleteAll()
+    public async Task DeleteAll()
     {
         using var connection = CreateConnection();
-        connection.Execute("DELETE FROM ToDoItems WHERE isComplete=true");
+        await connection.ExecuteAsync("DELETE FROM ToDoItems WHERE isComplete=true");
     }
 
-    public ToDoItem GetOne(long id)
+    public async Task<ToDoItem> GetOne(long id)
     {
         using var connection = CreateConnection();
-        return connection.QuerySingle<ToDoItem>("SELECT * FROM ToDoItems WHERE Id=@Id", new { Id = id });
+        return await connection.QuerySingleAsync<ToDoItem>("SELECT * FROM ToDoItems WHERE Id=@Id", new { Id = id });
     }
 
-    public ToDoItem Update(ToDoItem toDoItem)
+    public async Task<ToDoItem> Update(ToDoItem toDoItem)
     {
         using var connection = CreateConnection();
-        return connection.QuerySingle<ToDoItem>("UPDATE ToDoItems SET title = @Title, priority = @Priority, isComplete = @IsComplete WHERE Id=@Id; SELECT * FROM ToDoItems WHERE Id= @Id", toDoItem);
+        return await connection.QuerySingleAsync<ToDoItem>("UPDATE ToDoItems SET title = @Title, priority = @Priority, isComplete = @IsComplete WHERE Id=@Id; SELECT * FROM ToDoItems WHERE Id= @Id", toDoItem);
     }
 
-    public ToDoItem Insert(ToDoItem toDoItem)
+    public async Task<ToDoItem> Insert(ToDoItem toDoItem)
     {
         using var connection = CreateConnection();
-        return connection.QuerySingle<ToDoItem>("INSERT INTO ToDoItems (title, priority, isComplete) VALUES (@Title, @Priority, @IsComplete); SELECT * FROM ToDoItems WHERE title= @Title", toDoItem);
+        return await connection.QuerySingleAsync<ToDoItem>("INSERT INTO ToDoItems (title, priority, isComplete) VALUES (@Title, @Priority, @IsComplete); SELECT * FROM ToDoItems WHERE title= @Title", toDoItem);
     }
 
 }

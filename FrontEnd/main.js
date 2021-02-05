@@ -112,6 +112,5 @@ deleteCompletedBtn.addEventListener('click', deleteAllToDo);
 
 //filter by priority button
 const priorityBtn = document.querySelector('.filter-priority');
-
-  //orders on load anyway
+//orders on load anyway
 priorityBtn.addEventListener('click', () => location.reload());
