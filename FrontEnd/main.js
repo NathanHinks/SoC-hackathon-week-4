@@ -73,7 +73,6 @@ async function sendToDo(path, method, body = '') {
 }
 
 async function toggleToDoComplete(toDoItem) {
-	console.log(toDoItem);
 	const li = document.querySelector(`#to-do-item-${toDoItem.id}`);
 	await sendToDo(`/todoitems/${toDoItem.id}`, 'PUT', {
 		...toDoItem,
